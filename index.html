@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            
+            overflow: hidden; /* Ensure no scrollbars */
         }
 
         header {
@@ -17,8 +17,12 @@
             padding: 20px;
             color: rgb(0, 0, 0);
             text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure header is above background */
         }
-
+        header div {
+            flex-shrink: 0;
+        }
 
         header h1 {
             margin: 0;
@@ -30,11 +34,11 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(50%, 50%);
+            transform: translate(-50%, -50%);
+            z-index: 2; /* Ensure content is above background */
         }
 
         .nav-links {
@@ -46,34 +50,17 @@
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            text-align: left;
         }
 
         .nav-links a:hover {
             text-decoration: underline;
         }
-
         .content {
             padding: 20px;
             text-align: center;
         }
-        .vertical-center {
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-        a {
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            font-size: 19px;
-            text-align: right;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            width: 100px;
-            border: 5px solid rgb(255, 255, 255);
-        }
+
         .background {
             position: absolute;
             width: 100%;
@@ -81,24 +68,39 @@
             background-size: cover;
             background-position: center;
             animation: changeBackground 10s infinite;
-            z-index: -1; /* Ensure background is behind all content */
+            z-index: 0; /* Ensure background is behind all content */
         }
+
         @keyframes changeBackground {
-    0% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/97/39/f5/caption.jpg?w=1200&h=-1&s=1');}
-    33% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/18/9b/af/caption.jpg?w=1200&h=-1&s=1');}
-    66% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/97/39/f5/caption.jpg?w=1200&h=-1&s=1');}
-    100% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/18/9b/af/caption.jpg?w=1200&h=-1&s=1');}
-}
+            0% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/97/39/f5/caption.jpg?w=1200&h=-1&s=1'); }
+            33% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/18/9b/af/caption.jpg?w=1200&h=-1&s=1'); }
+            66% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/97/39/f5/caption.jpg?w=1200&h=-1&s=1'); }
+            100% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/18/9b/af/caption.jpg?w=1200&h=-1&s=1'); }
+        }
+
+        .div a {
+            color: rgb(0, 0, 0); /* Keep text color visible */
+            text-decoration: none; /* Remove underline */
+            display: inline; /* Ensure the link fits around the text */
+        }
+
+        .div a:hover {
+            text-decoration: none; /* Keep the text unchanged on hover */
+            color: rgb(0, 0, 0); /* Keep the text color consistent */
+        }
     </style>
 </head>
 <body>
     <header>
-            <a href = "index.html"><img src="1.png"></a>
+        <nav>
+            <div><a href="index.html"><img src="1.png" alt="Logo"></a>
+            </div>
+        </nav>
         <h1>모빌리티 가이드</h1>
     </header>
-    <div class='background'></div>
-        <element class="div">
-            <h1>문구(정하면 수정예정)</h1>
-        </div>
+    <div class="background"></div>
+    <div class="div">
+        <a href="."><h1>챗봇과 함께하는 모빌리티 가이드 시작하기</h1></a>
+    </div>
 </body>
 </html>
